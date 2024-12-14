@@ -6,14 +6,14 @@ Serviço responsável por operacionalizar os produtos(lanches)
 <img src="assets/arquiteturafase04.jpg">
 
 ### Evidência sonar
-<img src="assets/sonar.PNG">
+<img src="assets/cobertura_sonar.png">
 
 ## Comandos para rodar os testes
 
 <b>Testes de integração
 ```
 mvn test -P integration-test
-```
+``` 
 Testes de sistema
 ```
 mvn test
