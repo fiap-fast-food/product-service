@@ -22,45 +22,46 @@ public class DataInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        productRepository.deleteAll();
-        categoryRepository.deleteAll();
-
-        ProductEntity product1 = ProductEntity.builder()
-                .id(UUID.randomUUID().toString())
-                .name("HAMBURGUER TESTE")
-                .price(50.0)
-                .information("TESTE")
-                .build();
-        ProductEntity product2 = ProductEntity.builder()
-                .id(UUID.randomUUID().toString())
-                .name("REFRIGERANTE TESTE")
-                .price(5.0)
-                .information("TESTE")
-                .build();
-        ProductEntity product3 = ProductEntity.builder()
-                .id(UUID.randomUUID().toString())
-                .name("SORVETE TESTE")
-                .price(10.0)
-                .information("TESTE")
-                .build();
-
-        productRepository.saveAll(Arrays.asList(product1, product2, product3));
-
-        CategoryEntity category1 = CategoryEntity.builder()
-                .name("lanche")
-                .productId(product1.getId())
-                .build();
-        CategoryEntity category2 = CategoryEntity.builder()
-                .name("bebidas")
-                .productId(product2.getId())
-                .build();
-        CategoryEntity category3 = CategoryEntity.builder()
-                .name("sobremesas")
-                .productId(product3.getId())
-                .build();
-
-        categoryRepository.saveAll(Arrays.asList(category1, category2, category3));
-
-        System.out.println("Dados inseridos com sucesso!");
+        // para testes
+//        productRepository.deleteAll();
+//        categoryRepository.deleteAll();
+//
+//        ProductEntity product1 = ProductEntity.builder()
+//                .id(UUID.randomUUID().toString())
+//                .name("HAMBURGUER TESTE")
+//                .price(50.0)
+//                .information("TESTE")
+//                .build();
+//        ProductEntity product2 = ProductEntity.builder()
+//                .id(UUID.randomUUID().toString())
+//                .name("REFRIGERANTE TESTE")
+//                .price(5.0)
+//                .information("TESTE")
+//                .build();
+//        ProductEntity product3 = ProductEntity.builder()
+//                .id(UUID.randomUUID().toString())
+//                .name("SORVETE TESTE")
+//                .price(10.0)
+//                .information("TESTE")
+//                .build();
+//
+//        productRepository.saveAll(Arrays.asList(product1, product2, product3));
+//
+//        CategoryEntity category1 = CategoryEntity.builder()
+//                .name("lanche")
+//                .productId(product1.getId())
+//                .build();
+//        CategoryEntity category2 = CategoryEntity.builder()
+//                .name("bebidas")
+//                .productId(product2.getId())
+//                .build();
+//        CategoryEntity category3 = CategoryEntity.builder()
+//                .name("sobremesas")
+//                .productId(product3.getId())
+//                .build();
+//
+//        categoryRepository.saveAll(Arrays.asList(category1, category2, category3));
+//
+//        System.out.println("Dados inseridos com sucesso!");
     }
 }
