@@ -1,0 +1,33 @@
+name: Deploy Service Product
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Build Project
+        run: mvn clean install
+
+      - name: SonarCloud Scan
+        run: mvn sonar:sonar -Dsonar.organization=fiap-fast-food -Dsonar.projectKey=${{secrets.PRODUCT_SERVICE_KEY}} -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+
+      - name: Login Docker Hub
+        run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_LOGIN }} --password-stdin
+
+      - name: Build docker image
+        run: docker build -t fiapfastfood/product-service .
+
+      - name: Push image docker
+        run: docker push fiapfastfood/product-service
